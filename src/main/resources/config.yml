@@ -1,0 +1,20 @@
+# Master switch (can also be toggled in-game with /graves toggle)
+enabled: true
+
+# How long a grave exists before it despawns (seconds)
+lifetime-seconds: 3600
+
+# Nether roof is Y >= 127. Graves never spawn on the roof unless the player died there.
+nether-roof-y: 127
+
+messages:
+  prefix: "<gray>[<gold>Graves<gray>] "
+  grave-created: "<gray>Your grave was placed at <white>{x}, {y}, {z}<gray> in <white>{world}<gray>. Expires in <white>{time}<gray>."
+  grave-collected: "<gray>You collected your grave."
+  grave-expired: "<gray>Your grave at <white>{x}, {y}, {z}<gray> expired."
+  not-owner: "<red>This grave belongs to another player."
+  graves-disabled: "<red>Death graves are currently disabled."
+  no-graves: "<gray>You have no active graves."
+  toggled-on: "<green>Death graves enabled."
+  toggled-off: "<red>Death graves disabled."
+  no-permission: "<red>You do not have permission."

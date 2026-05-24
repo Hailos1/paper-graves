@@ -1,0 +1,31 @@
+name: PaperGraves
+
+version: '${version}'
+
+main: com.graves.GravesPlugin
+
+api-version: '1.21'
+
+description: Player death graves as collectible skull blocks
+
+authors: [PaperGraves]
+
+commands:
+  graves:
+    description: Death graves management
+    usage: /graves <help|list|toggle>
+    aliases: [grave]
+
+permissions:
+  graves.list:
+    description: List your active graves
+    default: true
+  graves.admin:
+    description: Toggle graves globally and manage plugin
+    default: op
+  graves.*:
+    description: All graves permissions
+    default: op
+    children:
+      graves.list: true
+      graves.admin: true
