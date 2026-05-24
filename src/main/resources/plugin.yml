@@ -6,25 +6,25 @@ main: com.graves.GravesPlugin
 
 api-version: '1.21'
 
-description: Player death graves as collectible skull blocks
+description: Могилы с вещами игрока после смерти
 
 authors: [PaperGraves]
 
 commands:
   graves:
-    description: Death graves management
+    description: Управление могилами после смерти
     usage: /graves <help|list|toggle>
     aliases: [grave]
 
 permissions:
   graves.list:
-    description: List your active graves
+    description: Список ваших активных могил
     default: true
   graves.admin:
-    description: Toggle graves globally and manage plugin
+    description: Включение и отключение могил
     default: op
   graves.*:
-    description: All graves permissions
+    description: Все права PaperGraves
     default: op
     children:
       graves.list: true

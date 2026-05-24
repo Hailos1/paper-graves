@@ -52,39 +52,38 @@ public final class GravesCommand implements CommandExecutor, TabCompleter {
 
     private boolean handleList(CommandSender sender) {
         if (!(sender instanceof Player player)) {
-            sender.sendMessage("Only players can list their graves.");
+            graveManager.sendMessage(sender, config.message("only-players"));
             return true;
         }
         if (!sender.hasPermission("graves.list")) {
-            graveManager.sendMessage(player, config.message("no-permission"));
+            graveManager.sendMessage(sender, config.message("no-permission"));
             return true;
         }
 
         List<Grave> graves = graveManager.getGravesForPlayer(player.getUniqueId());
         if (graves.isEmpty()) {
-            graveManager.sendMessage(player, config.message("no-graves"));
+            graveManager.sendMessage(sender, config.message("no-graves"));
             return true;
         }
 
         long now = System.currentTimeMillis();
-        graveManager.sendMessage(player, "&7Active graves (" + graves.size() + "):");
+        graveManager.sendMessage(sender, config.message("list-heading")
+                .replace("{count}", Integer.toString(graves.size())));
         for (Grave grave : graves) {
             long remaining = grave.remainingSeconds(now);
-            String line = "&f" + grave.worldName() + " "
-                    + grave.x() + ", " + grave.y() + ", " + grave.z()
-                    + " &7- &f" + GraveManager.formatDuration(remaining) + " left";
-            graveManager.sendMessage(player, line);
+            graveManager.sendMessage(sender, config.message("list-entry")
+                    .replace("{world}", grave.worldName())
+                    .replace("{x}", Integer.toString(grave.x()))
+                    .replace("{y}", Integer.toString(grave.y()))
+                    .replace("{z}", Integer.toString(grave.z()))
+                    .replace("{time}", GraveManager.formatDuration(remaining)));
         }
         return true;
     }
 
     private boolean handleToggle(CommandSender sender, String sub) {
         if (!sender.hasPermission("graves.admin")) {
-            if (sender instanceof Player player) {
-                graveManager.sendMessage(player, config.message("no-permission"));
-            } else {
-                sender.sendMessage("No permission.");
-            }
+            graveManager.sendMessage(sender, config.message("no-permission"));
             return true;
         }
 
@@ -95,18 +94,14 @@ public final class GravesCommand implements CommandExecutor, TabCompleter {
         };
         config.setEnabled(newValue);
         String message = newValue ? config.message("toggled-on") : config.message("toggled-off");
-        if (sender instanceof Player player) {
-            graveManager.sendMessage(player, message);
-        } else {
-            sender.sendMessage(message.replace('&', '§'));
-        }
+        graveManager.sendMessage(sender, message);
         return true;
     }
 
     private void sendHelp(CommandSender sender) {
-        sender.sendMessage("§6/graves help §7- show this help");
-        sender.sendMessage("§6/graves list §7- list your active graves");
-        sender.sendMessage("§6/graves toggle §7- enable/disable graves (admin)");
+        graveManager.sendMessage(sender, config.message("help-1"));
+        graveManager.sendMessage(sender, config.message("help-2"));
+        graveManager.sendMessage(sender, config.message("help-3"));
     }
 
     @Override

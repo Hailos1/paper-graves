@@ -10,11 +10,11 @@ public final class GraveFormatting {
         long minutes = (seconds % 3600) / 60;
         long secs = seconds % 60;
         if (hours > 0) {
-            return hours + "h " + minutes + "m";
+            return hours + "ч " + minutes + "м";
         }
         if (minutes > 0) {
-            return minutes + "m " + secs + "s";
+            return minutes + "м " + secs + "с";
         }
-        return secs + "s";
+        return secs + "с";
     }
 }

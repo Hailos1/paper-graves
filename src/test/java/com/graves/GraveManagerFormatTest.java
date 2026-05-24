@@ -8,8 +8,8 @@ class GraveManagerFormatTest {
 
     @Test
     void formatsDuration() {
-        assertEquals("45s", GraveFormatting.formatDuration(45));
-        assertEquals("2m 5s", GraveFormatting.formatDuration(125));
-        assertEquals("1h 0m", GraveFormatting.formatDuration(3600));
+        assertEquals("45с", GraveFormatting.formatDuration(45));
+        assertEquals("2м 5с", GraveFormatting.formatDuration(125));
+        assertEquals("1ч 0м", GraveFormatting.formatDuration(3600));
     }
 }

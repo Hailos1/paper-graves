@@ -5,7 +5,7 @@ import com.graves.persistence.GraveJsonCodec.GraveExpirySplit;
 import com.graves.persistence.GraveFileStore;
 import com.graves.persistence.GraveJsonCodec;
 import com.graves.persistence.GraveMapper;
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -13,6 +13,7 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.Skull;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -29,7 +30,7 @@ import java.util.logging.Level;
 
 public final class GraveManager {
 
-    private static final LegacyComponentSerializer LEGACY = LegacyComponentSerializer.legacySection();
+    private static final MiniMessage MINI_MESSAGE = MiniMessage.miniMessage();
 
     private final JavaPlugin plugin;
     private final GravesConfig config;
@@ -304,8 +305,8 @@ public final class GraveManager {
         savePersisted();
     }
 
-    public void sendMessage(Player player, String legacyMessage) {
-        player.sendMessage(LEGACY.deserialize(legacyMessage.replace('&', '§')));
+    public void sendMessage(CommandSender sender, String message) {
+        sender.sendMessage(MINI_MESSAGE.deserialize(message));
     }
 
     public static String formatDuration(long seconds) {

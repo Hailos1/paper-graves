@@ -1,29 +1,29 @@
 # PaperGraves
 
-Paper **26.1.2** plugin: on death, stores inventory in a player-head grave block with owner-only collection and configurable lifetime.
+Плагин для Paper **26.1.2**: после смерти сохраняет инвентарь игрока в могиле-голове, которую может забрать только владелец. Время жизни могилы настраивается.
 
 ## Build
 
-Requires JDK 25 (project links to `.jdk25` from `paper-nickname-whitelist` via junction).
+Требуется JDK 25.
 
 ```bat
 cd C:\Users\HAILOS\paper-graves
 gradlew.bat build
 ```
 
-Output JAR: `build/libs/PaperGraves-1.0.0.jar`
+Готовый JAR: `build/libs/PaperGraves-1.0.0.jar`
 
 ## Commands
 
-| Command | Permission | Description |
-|---------|------------|-------------|
-| `/graves help` | — | Help |
-| `/graves list` | `graves.list` | Your active graves + remaining time |
-| `/graves toggle` | `graves.admin` | Enable/disable graves globally |
+| Команда | Право | Описание |
+|---------|-------|----------|
+| `/graves help` | — | Помощь |
+| `/graves list` | `graves.list` | Ваши активные могилы и оставшееся время |
+| `/graves toggle` | `graves.admin` | Включить или отключить могилы |
 
 ## Config
 
-`plugins/PaperGraves/config.yml` — `enabled`, `lifetime-seconds` (default 3600), `nether-roof-y` (127).
+`plugins/PaperGraves/config.yml` — `enabled`, `lifetime-seconds` (по умолчанию 3600), `nether-roof-y` (127), блок `messages` с русскими MiniMessage-строками.
 
 ## Tests
 
@@ -31,4 +31,4 @@ Output JAR: `build/libs/PaperGraves-1.0.0.jar`
 gradlew.bat test
 ```
 
-Pure unit tests cover placement rules, item slot planning, lifetime, and collection permissions.
+Юнит-тесты покрывают правила размещения, восстановление слотов, время жизни и права на сбор могилы.

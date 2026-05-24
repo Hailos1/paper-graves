@@ -1,20 +1,26 @@
-# Master switch (can also be toggled in-game with /graves toggle)
+# Главный переключатель (также меняется командой /graves toggle)
 enabled: true
 
-# How long a grave exists before it despawns (seconds)
+# Сколько секунд могила существует до исчезновения
 lifetime-seconds: 3600
 
-# Nether roof is Y >= 127. Graves never spawn on the roof unless the player died there.
+# Крыша Незера начинается с Y >= 127. Могилы появляются на крыше только если игрок умер там.
 nether-roof-y: 127
 
 messages:
-  prefix: "<gray>[<gold>Graves<gray>] "
-  grave-created: "<gray>Your grave was placed at <white>{x}, {y}, {z}<gray> in <white>{world}<gray>. Expires in <white>{time}<gray>."
-  grave-collected: "<gray>You collected your grave."
-  grave-expired: "<gray>Your grave at <white>{x}, {y}, {z}<gray> expired."
-  not-owner: "<red>This grave belongs to another player."
-  graves-disabled: "<red>Death graves are currently disabled."
-  no-graves: "<gray>You have no active graves."
-  toggled-on: "<green>Death graves enabled."
-  toggled-off: "<red>Death graves disabled."
-  no-permission: "<red>You do not have permission."
+  prefix: "<dark_gray>[<gold>Могилы</gold>]</dark_gray> "
+  grave-created: "<gray>Ваша могила создана на координатах <white>{x}, {y}, {z}</white> в мире <white>{world}</white>. Исчезнет через <white>{time}</white>.</gray>"
+  grave-collected: "<gray>Вы забрали вещи из своей могилы.</gray>"
+  grave-expired: "<gray>Ваша могила на координатах <white>{x}, {y}, {z}</white> исчезла.</gray>"
+  not-owner: "<red>Эта могила принадлежит другому игроку.</red>"
+  graves-disabled: "<red>Могилы после смерти сейчас отключены.</red>"
+  no-graves: "<gray>У вас нет активных могил.</gray>"
+  toggled-on: "<green>Могилы после смерти включены.</green>"
+  toggled-off: "<red>Могилы после смерти отключены.</red>"
+  no-permission: "<red>У вас нет прав на эту команду.</red>"
+  only-players: "<red>Эта команда доступна только игрокам.</red>"
+  list-heading: "<gray>Активные могилы: <white>{count}</white></gray>"
+  list-entry: "<white>{world}</white> <gray>{x}, {y}, {z} - осталось <white>{time}</white></gray>"
+  help-1: "<gold>/graves help</gold> <gray>- показать помощь</gray>"
+  help-2: "<gold>/graves list</gold> <gray>- список ваших активных могил</gray>"
+  help-3: "<gold>/graves toggle</gold> <gray>- включить или отключить могилы</gray>"
