@@ -22,6 +22,15 @@ class GravePlacementTest {
     }
 
     @Test
+    void rejectsPassableOccupiedBlocks() {
+        TestBlockGrid grid = new TestBlockGrid(false, -64, 319)
+                .set(0, 64, 0, CellType.PASSABLE)
+                .set(0, 63, 0, CellType.SOLID);
+
+        assertFalse(GravePlacement.isValidGraveY(grid, 0, 64, 0, false, 127));
+    }
+
+    @Test
     void requiresAirWithSolidBelow() {
         TestBlockGrid grid = new TestBlockGrid(false, -64, 319)
                 .set(0, 64, 0, CellType.AIR)

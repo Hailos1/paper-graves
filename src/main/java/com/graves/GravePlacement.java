@@ -84,10 +84,7 @@ public final class GravePlacement {
     }
 
     static boolean canPlaceAt(BlockColumnReader world, int x, int y, int z) {
-        if (world.isAirAt(x, y, z)) {
-            return true;
-        }
-        return !world.isFluidAt(x, y, z) && !world.isSolidAt(x, y, z);
+        return world.isAirAt(x, y, z);
     }
 
     static boolean hasSolidSupport(BlockColumnReader world, int x, int y, int z) {

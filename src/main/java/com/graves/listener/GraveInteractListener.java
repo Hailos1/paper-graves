@@ -33,6 +33,7 @@ public final class GraveInteractListener implements Listener {
             return;
         }
 
+        event.setDropItems(false);
         event.setCancelled(true);
         handleCollect(event.getPlayer(), graveOpt.get());
     }
